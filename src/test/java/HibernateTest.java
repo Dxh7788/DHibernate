@@ -42,7 +42,7 @@ public class HibernateTest {
 
     @Test
     public void testHolderParserHql(){
-        String hql = "from User u where  u.id=?";
+        String hql = "from User u where  u.namer.id=?";
         List params = new ArrayList<String>();
         params.add("1");
         String sql = ParseHqlHelper.holderParamsParser(hql,params);

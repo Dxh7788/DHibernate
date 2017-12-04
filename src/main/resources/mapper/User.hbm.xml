@@ -10,5 +10,8 @@
         </id>
         <property name="name" column="name"/>
         <property name="pwd" column="pwd"/>
+
+        <!-- 配置关系-->
+        <one-to-one name="namer" class="Namer" property-ref="users"/>
     </class>
 </hibernate-mapping>

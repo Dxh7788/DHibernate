@@ -14,5 +14,6 @@
         <property name="hbm2ddl.auto">create</property>
 
         <mapping resource="mapper/User.hbm.xml"/>
+        <mapping resource="mapper/Namer.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
