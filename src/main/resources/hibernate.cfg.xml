@@ -13,6 +13,6 @@
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping resource="com/work/hn/model/User.hbm.xml"/>
+        <mapping resource="mapper/User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
