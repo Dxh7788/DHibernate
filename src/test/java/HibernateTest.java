@@ -17,7 +17,7 @@ public class HibernateTest {
          */
         System.out.println("================开始创建session================");
         SessionFactory sf = configuration.buildSessionFactory();
-        Session session = sf.getCurrentSession();
+        Session session = sf.openSession();
 
         //generate entity User
         User user = new User("1","xxx","123456");
