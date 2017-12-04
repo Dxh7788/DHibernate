@@ -1,5 +1,8 @@
 package com.work.hn.model;
 
+/**
+ * 实体类User
+ * */
 public class User {
     private String id;
     private String name;
