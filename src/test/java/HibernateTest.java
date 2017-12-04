@@ -1,9 +1,13 @@
 import com.work.hn.model.User;
+import com.work.hn.util.ParseHqlHelper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HibernateTest {
 
@@ -25,5 +29,23 @@ public class HibernateTest {
         session.save(user);
         tx.commit();
         session.close();
+    }
+    /**
+     * Hibernate 解析HQL
+     * */
+    @Test
+    public void testNoneParseHql(){
+        String hql = "from User u";
+        String sql = ParseHqlHelper.noneParamsParser(hql);
+        System.out.println(sql);
+    }
+
+    @Test
+    public void testHolderParserHql(){
+        String hql = "from User u where  u.id=?";
+        List params = new ArrayList<String>();
+        params.add("1");
+        String sql = ParseHqlHelper.holderParamsParser(hql,params);
+        System.out.println(sql);
     }
 }

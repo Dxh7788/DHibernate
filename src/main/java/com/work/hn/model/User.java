@@ -10,6 +10,8 @@ public class User implements Serializable{
     private String name;
     private String pwd;
 
+    private Namer namer;
+
     public User(String id, String name, String pwd) {
         this.id = id;
         this.name = name;
@@ -41,5 +43,13 @@ public class User implements Serializable{
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public Namer getNamer() {
+        return namer;
+    }
+
+    public void setNamer(Namer namer) {
+        this.namer = namer;
     }
 }
