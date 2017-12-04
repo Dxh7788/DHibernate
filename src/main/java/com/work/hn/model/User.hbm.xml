@@ -3,12 +3,12 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.work.hn.model" catalog="jdbct">
+<hibernate-mapping  package="com.work.hn.model"  catalog="jdbct">
     <class name="User" table="user">
-        <id name="id" column="id" type="java.lang.String">
-            <generator class="native"/>
+        <id name="id" column="id">
+            <generator class="assigned"/>
         </id>
-        <property name="name" column="name" type="java.lang.String"/>
-        <property name="pwd" column="pwd" type="java.lang.String"/>
+        <property name="name" column="name"/>
+        <property name="pwd" column="pwd"/>
     </class>
 </hibernate-mapping>

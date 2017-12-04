@@ -1,12 +1,23 @@
 package com.work.hn.model;
 
+import java.io.Serializable;
+
 /**
  * 实体类User
  * */
-public class User {
+public class User implements Serializable{
     private String id;
     private String name;
     private String pwd;
+
+    public User(String id, String name, String pwd) {
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+    }
+
+    public User() {
+    }
 
     public String getId() {
         return id;
