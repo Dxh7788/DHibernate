@@ -12,6 +12,6 @@
         <property name="pwd" column="pwd"/>
 
         <!-- 配置关系-->
-        <one-to-one name="namer" class="Namer" property-ref="users"/>
+        <many-to-one name="namer" class="Namer" column="namer_id" cascade="none"/>
     </class>
 </hibernate-mapping>

@@ -9,6 +9,10 @@
         </id>
         <property name="firstName" column="first_name"/>
         <property name="lastName" column="last_name"/>
-        <many-to-one name="users" class="User" column="user_id" unique="true"/>
+        <!-- 配置关系一个名字,多个人用-->
+        <set name="users" inverse="true" cascade="none">
+            <key column="namer_id"/>
+            <one-to-many class="com.work.hn.model.User"/>
+        </set>
     </class>
 </hibernate-mapping>
