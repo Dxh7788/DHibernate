@@ -1,4 +1,6 @@
+import com.work.hn.model.Klo;
 import com.work.hn.model.Mjoer;
+import com.work.hn.model.Question;
 import com.work.hn.model.User;
 import com.work.hn.util.ParseHqlHelper;
 import org.hibernate.Session;
@@ -122,6 +124,40 @@ public class HibernateTest {
             Map.Entry<String,String> ele = (Map.Entry<String,String>)iterator.next();
             System.out.println("[key: "+ele.getKey()+",  value:"+ele.getValue()+"]");
         }
+        session.close();
+    }
+
+    @Test
+    public void testManyToManyWithMap(){
+        Configuration configuration = new Configuration().configure();
+        System.out.println("================Hibernate session配置完成,开始操作数据库============");
+        System.out.println("================开始创建ServiceRegistry================");
+        /**
+         * ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+         */
+        System.out.println("================开始创建session================");
+        SessionFactory sf = configuration.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+
+
+        Map<String,Klo> map0 = new HashMap<String,Klo>();
+        Map<String,Klo> map1 = new HashMap<String,Klo>();
+        Klo klo0 =new Klo("1","12","@163");
+        Klo klo1 =new Klo("2","22","@136");
+
+        map0.put("1",klo0);
+        map0.put("2",klo1);
+        map1.put("2",klo1);
+        map1.put("1",klo0);
+
+        Question question0 = new Question("1","12",map0);
+        Question question1 = new Question("2","22",map1);
+
+        session.save(question0);
+        session.save(question1);
+
+        tx.commit();
         session.close();
     }
 }

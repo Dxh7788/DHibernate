@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.work.hn.model">
+    <class name="Question" table="question">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <!-- 配置map 一对一主键关联-->
+        <map name="klos" table="klo" cascade="all">
+            <key column="questionId"></key>
+            <index column="name" type="java.lang.String"/>
+            <many-to-many class="com.work.hn.model.Klo" column="klo_id"></many-to-many>
+        </map>
+    </class>
+</hibernate-mapping>
