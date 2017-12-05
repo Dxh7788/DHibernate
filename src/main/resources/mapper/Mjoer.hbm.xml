@@ -7,7 +7,7 @@
         <id name="id" column="id"></id>
         <property name="name" column="name"/>
         <property name="pwd" column="pwd"/>
-        <!-- 配置map-->
+        <!-- 配置map 一对一主键关联-->
         <map name="answers" table="answer" cascade="all">
             <key column="mjoer_id"></key>
             <index column="answer" type="java.lang.String"/>
