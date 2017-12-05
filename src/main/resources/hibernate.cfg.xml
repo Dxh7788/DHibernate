@@ -15,5 +15,6 @@
 
         <mapping resource="mapper/User.hbm.xml"/>
         <mapping resource="mapper/Namer.hbm.xml"/>
+        <mapping resource="mapper/Mjoer.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

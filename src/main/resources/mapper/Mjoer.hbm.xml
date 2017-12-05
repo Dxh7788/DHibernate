@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.work.hn.model">
+    <class name="Mjoer" table="mjoer">
+        <id name="id" column="id"></id>
+        <property name="name" column="name"/>
+        <property name="pwd" column="pwd"/>
+        <!-- 配置map-->
+        <map name="answers" table="answer" cascade="all">
+            <key column="mjoer_id"></key>
+            <index column="answer" type="java.lang.String"/>
+            <element column="name" type="java.lang.String"/>
+        </map>
+    </class>
+</hibernate-mapping>

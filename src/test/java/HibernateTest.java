@@ -1,3 +1,4 @@
+import com.work.hn.model.Mjoer;
 import com.work.hn.model.User;
 import com.work.hn.util.ParseHqlHelper;
 import org.hibernate.Session;
@@ -7,7 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HibernateTest {
 
@@ -79,5 +82,39 @@ public class HibernateTest {
         System.out.println(oldUser);
         tx.commit();
         session.close();
+    }
+
+    /**
+     * test map
+     * */
+    @Test
+    public void testHibernateMap(){
+        Configuration configuration = new Configuration().configure();
+        System.out.println("================Hibernate session配置完成,开始操作数据库============");
+        System.out.println("================开始创建ServiceRegistry================");
+        /**
+         * ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+         */
+        System.out.println("================开始创建session================");
+        SessionFactory sf = configuration.buildSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        Map<String,String> map0 = new HashMap<String,String>();
+        Map<String,String> map1 = new HashMap<String,String>();
+
+        map0.put("xxxxxxxxxxxxxxxxxxxxxxx_1","ddx");
+        map1.put("XXXXXXXXXXXXXXXXXXXXXXX_1","ddd");
+
+        Mjoer mjoer0 = new Mjoer("ddx","123456",map0);
+        Mjoer mjoer1 = new Mjoer("ddd","654321",map1);
+
+        mjoer0.setId("1");
+        mjoer1.setId("2");
+
+        session.save(mjoer0);
+        session.save(mjoer1);
+        tx.commit();
+        session.close();
+
     }
 }
