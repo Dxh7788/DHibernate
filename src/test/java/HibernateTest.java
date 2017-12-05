@@ -7,10 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HibernateTest {
 
@@ -99,22 +96,32 @@ public class HibernateTest {
         SessionFactory sf = configuration.buildSessionFactory();
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
-        Map<String,String> map0 = new HashMap<String,String>();
-        Map<String,String> map1 = new HashMap<String,String>();
 
+        /** Add:=======================================
+         * Map<String,String> map0 = new HashMap<String,String>();
+        Map<String,String> map1 = new HashMap<String,String>();
         map0.put("xxxxxxxxxxxxxxxxxxxxxxx_1","ddx");
         map1.put("XXXXXXXXXXXXXXXXXXXXXXX_1","ddd");
-
         Mjoer mjoer0 = new Mjoer("ddx","123456",map0);
         Mjoer mjoer1 = new Mjoer("ddd","654321",map1);
-
         mjoer0.setId("1");
         mjoer1.setId("2");
-
         session.save(mjoer0);
         session.save(mjoer1);
-        tx.commit();
-        session.close();
+         */
 
+
+        /**
+         * Query
+         * */
+        Mjoer mjoer2 = (Mjoer) session.get(Mjoer.class,"1");
+        tx.commit();
+        Set<Map.Entry<String,String>> entries = mjoer2.getAnswers().entrySet();
+        Iterator iterator = entries.iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String,String> ele = (Map.Entry<String,String>)iterator.next();
+            System.out.println("[key: "+ele.getKey()+",  value:"+ele.getValue()+"]");
+        }
+        session.close();
     }
 }
