@@ -19,14 +19,6 @@ public class HibernateTest {
         Configuration configuration = new Configuration().configure();
         System.out.println("================Hibernate session配置完成,开始操作数据库============");
         System.out.println("================开始创建ServiceRegistry================");
-        Properties properties = configuration.getProperties();
-        Set<Map.Entry<Object, Object>> entries = properties.entrySet();
-        Iterator iterator = entries.iterator();
-        while (iterator.hasNext()){
-            Map.Entry<Object, Object> entry = (Map.Entry<Object, Object>)iterator.next();
-            System.out.println(entry.getKey()+""+entry.getValue());
-
-        }
         ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
         System.out.println("================开始创建session================");
