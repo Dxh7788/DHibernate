@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.work.hn.model">
     <class table="user" name="com.work.hn.model.User">
-        <id name="id" column="id" type="java.lang.String">
+        <id name="id" column="id" type="java.lang.Long">
             <generator class="native"/>
         </id>
         <property name="name" column="name" type="java.lang.String"/>

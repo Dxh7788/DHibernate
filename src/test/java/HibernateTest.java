@@ -21,12 +21,14 @@ public class HibernateTest {
         System.out.println("================开始创建ServiceRegistry================");
         ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
-        System.out.println("================开始创建session================");
+        System.out.println("================开始创建sessionFactory================");
         SessionFactory sf = configuration.buildSessionFactory(sr);
+        System.out.println("================开启session================");
         Session session = sf.openSession();
 
+        System.out.println(session.hashCode());
+
         User user = new User();
-        user.setId("1");
         user.setName("123");
         user.setPwd("123456");
         Transaction tx = session.beginTransaction();
