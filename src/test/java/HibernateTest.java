@@ -28,12 +28,12 @@ public class HibernateTest {
 
         System.out.println(session.hashCode());
 
-        User user = new User();
-        user.setName("123");
-        user.setPwd("123456");
-        Transaction tx = session.beginTransaction();
-        session.save(user);
-        tx.commit();
+//        User user = new User();
+//        user.setName("123");
+//        user.setPwd("123456");
+//        Transaction tx = session.beginTransaction();
+//        session.save(user);
+//        tx.commit();
         session.close();
     }
 }
